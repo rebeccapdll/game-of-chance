@@ -4,7 +4,8 @@ money = 100
 
 #Write your game of chance functions here
 def coin(bet,call):
-  flip = random.randint(1,2)
+  # flipping the coin
+  flip = ['tails', 'heads'][random.randrange(2)]
   # checking if bet is possible
   if bet < 0:
     print( 'You cannot bet negative amounts, please bet a positive amount')
@@ -15,11 +16,7 @@ def coin(bet,call):
   if  bet > money :
     print("""Sorry you don't have enough money for that bet""")
     return 0
-  # defining heads and tails
-  if flip ==1:
-    flip = 'heads'
-  else:
-    flip = 'tails'
+  # checking if the bet was won or lost 
   if flip == call and bet > 0:
     print('Result is ' + flip)
     print('You won ' + str(bet))
@@ -132,11 +129,13 @@ def roulette(bet,outcome):
 #Call your game of chance functions here
 money += coin(50,'heads')
 print(money)
-money += cho_han(-60, 'odd')
+money += cho_han(5, 'odd')
 print(money)
 money += cards(20, 30)
 print(money)
 money += roulette(50, 'red')
+print(money)
+money += coin(10,'tails')
 print(money)
 
 
